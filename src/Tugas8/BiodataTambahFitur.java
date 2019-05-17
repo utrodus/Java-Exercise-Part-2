@@ -47,16 +47,18 @@ public class BiodataTambahFitur {
                     JOptionPane.showMessageDialog(null, "Yang Anda Masukkan Salah");
                 } else {
 
-                    if (Menu == 1) {                        
+                    // TAMPILKAN DATA
+                    if (Menu == 1) {
 
                         for (int i = 0; i < 10; i++) {
                             SemuaData += (i + 1) + ". " + nim[i] + " - " + nama[i] + " - Ipk: (" + Ipk[i] + ")" + "\n";
                         }
-                        
-                        JOptionPane.showMessageDialog(null, SemuaData);
-                        
+
+                        JOptionPane.showMessageDialog(null, " Data Mahasiswa \n" + SemuaData + "\n");
+                        // Isi variable Semua data menjadi kosongan atau kosongkan kembali variabel semua data
+                        SemuaData = "";
                     }
-                    
+
                     // CARI DATA
                     if (Menu == 2) {
                         String CariData = JOptionPane.showInputDialog(null, "Masukkan Data yang ingin anda cari \n*Berdasarkan NIM Mahasiswa* ");
@@ -74,7 +76,7 @@ public class BiodataTambahFitur {
                         }
 
                     }
-                    
+
                     // GANTI DATA
                     if (Menu == 3) {
                         String gantiData = JOptionPane.showInputDialog("Pilih Data yang akan diganti berdasarkan : \n"
@@ -83,32 +85,52 @@ public class BiodataTambahFitur {
                                 + "\n3. IPK"
                                 + "\n========== ~ ===========");
                         int Data = Integer.valueOf(gantiData);
+                        if (Data < 0 || Data > 3) {
+                            JOptionPane.showMessageDialog(null, "Maaf ! Yang anda masukkan salah");
+                        } else {
+                            // * ganti nim
+                            if (Data == 1) {
 
-                        if (Data == 1) {
-                            String CariNim = JOptionPane.showInputDialog(null, "Masukkan Nim yang ingin anda Ganti");
-                            int dataNIM = Integer.valueOf(CariNim);
+                                String CariNim = JOptionPane.showInputDialog(null, "Masukkan Nim yang ingin anda Ganti");
+                                int dataNIM = Integer.valueOf(CariNim);
 
-                            // Mencari Berdasarkan NIM
-                            for (int i = 0; i < nim.length; i++) {
-                                if (dataNIM == nim[i]) {
-                                    int GantiNim = JOptionPane.showConfirmDialog(null, "NIM " + nim[i] + " Telah Ditemukan,\n Apakah Anda benar-benar Ingin Menggantinya ?");
-                                    if (GantiNim == JOptionPane.YES_OPTION) {
-                                        String NimBaru = JOptionPane.showInputDialog("Masukkan NIM Baru");
-                                        int nimTelahDiganti = Integer.valueOf(NimBaru);
+                                // Mencari Berdasarkan NIM
+                                for (int i = 0; i < nim.length; i++) {
+                                    if (dataNIM == nim[i]) {
+                                        int GantiNim = JOptionPane.showConfirmDialog(null, "NIM " + nim[i] + " Telah Ditemukan,\n Apakah Anda benar-benar Ingin Menggantinya ?");
+                                        if (GantiNim == JOptionPane.YES_OPTION) {
+                                            String NimBaru = JOptionPane.showInputDialog("Masukkan NIM Baru");
+                                            int nimTelahDiganti = Integer.valueOf(NimBaru);
 //                                        SemuaData += nimTelahDiganti;
-                                        nim[i] = nimTelahDiganti;
-                                        System.out.println(nim[i]);
+                                            nim[i] = nimTelahDiganti;
+                                            System.out.println("Nim telah diganti menjadi : " + nim[i]);
+                                        }
                                     }
                                 }
                             }
-                        }
 
-                        if (Data == 2) {
+                            // * ganti nama
+                            if (Data == 2) {
 
-                        }
+                                String CariNama = JOptionPane.showInputDialog(null, "Masukkan Nama yang ingin anda Ganti");
 
-                        if (Data == 3) {
+                                for (int i = 0; i < nama.length; i++) {
+                                    if (CariNama.equalsIgnoreCase(nama[i])) {
+                                        int GantiNama = JOptionPane.showConfirmDialog(null, "Nama : " + nama[i] + " Telah Ditemukan,\n Apakah Anda benar-benar Ingin Menggantinya ?");
+                                        if (GantiNama == JOptionPane.YES_OPTION) {
+                                            String NamaBaru = JOptionPane.showInputDialog("Masukkan Nama Baru");
+                                            nama[i] = NamaBaru;
+                                            System.out.println("Nama telah diganti menjadi : " + nama[i]);
+                                        }
+                                    }
 
+                                }
+                            }
+
+                            // * ganti ipk
+                            if (Data == 3) {
+
+                            }
                         }
 
                     }
