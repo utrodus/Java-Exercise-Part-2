@@ -31,16 +31,16 @@ public class BiodataTambahFitur {
         double[] Ipk = {3.4, 3.5, 3.6, 3.6, 3.8,
             3.5, 3.4, 3.7, 3.3, 3.4,};
 
-        JOptionPane.showMessageDialog(null, "Selamat Datang Di Aplikasi Data Biodata Mahasiswa");
+        JOptionPane.showMessageDialog(null, "Selamat Datang Di Aplikasi Biodata \n Mahasiswa ILKOM 2A UNU BLITAR");
 
         while (isRunning) {
             try {
-                String InputUser = JOptionPane.showInputDialog("========= Menu ========= \n"
+                String InputUser = JOptionPane.showInputDialog("==== Menu Aplikasi Biodata Mahasiswa ==== \n"
                         + "\n1. Tampilkan Data Keseluruhan "
                         + "\n2. Cari Data Mahasiswa"
                         + "\n3. Ganti Data Mahasiswa"
-                        + "\n4. Keluar \n "
-                        + "\n========== ~ ===========");
+                        + "\n4. Keluar \n\n"
+                );
                 int Menu = Integer.valueOf(InputUser);
 
                 if (Menu > 4 || Menu < 1) {
@@ -50,11 +50,11 @@ public class BiodataTambahFitur {
                     // TAMPILKAN DATA
                     if (Menu == 1) {
 
-                        for (int i = 0; i < 10; i++) {
+                        for (int i = 0; i < Ipk.length; i++) {
                             SemuaData += (i + 1) + ". " + nim[i] + " - " + nama[i] + " - Ipk: (" + Ipk[i] + ")" + "\n";
                         }
 
-                        JOptionPane.showMessageDialog(null, " Data Mahasiswa \n" + SemuaData + "\n");
+                        JOptionPane.showMessageDialog(null, " === Data Mahasiswa === \n\n" + SemuaData + "\n");
                         // Isi variable Semua data menjadi kosongan atau kosongkan kembali variabel semua data
                         SemuaData = "";
                     }
@@ -72,6 +72,15 @@ public class BiodataTambahFitur {
                                         + "NAMA     : " + nama[i] + "\n"
                                         + "IPK         : " + Ipk[i]
                                         + "\n===================");
+                                
+                                int GantiNim = JOptionPane.showConfirmDialog(null," Apakah Anda Ingin Menggantinya ?");
+                                        if (GantiNim == JOptionPane.YES_OPTION) {
+                                            String NimBaru = JOptionPane.showInputDialog("Masukkan NIM Baru");
+                                            int nimTelahDiganti = Integer.valueOf(NimBaru);
+                                            nim[i] = nimTelahDiganti;
+                                            JOptionPane.showMessageDialog(null, "Nim telah diganti menjadi : " + nim[i]);                                            
+                                        }
+                                
                             }
                         }
 
@@ -101,7 +110,6 @@ public class BiodataTambahFitur {
                                         if (GantiNim == JOptionPane.YES_OPTION) {
                                             String NimBaru = JOptionPane.showInputDialog("Masukkan NIM Baru");
                                             int nimTelahDiganti = Integer.valueOf(NimBaru);
-//                                        SemuaData += nimTelahDiganti;
                                             nim[i] = nimTelahDiganti;
                                             System.out.println("Nim telah diganti menjadi : " + nim[i]);
                                         }
@@ -129,6 +137,22 @@ public class BiodataTambahFitur {
 
                             // * ganti ipk
                             if (Data == 3) {
+                                String CariIpk = JOptionPane.showInputDialog(null, "Masukkan IPK yang ingin anda Ganti");
+                                Double GantiIpk = Double.valueOf(CariIpk);
+
+                                for (int i = 0; i < Ipk.length; i++) {
+                                    if (GantiIpk == Ipk[i]) {
+                                        int IpkBaruConfirm = JOptionPane.showConfirmDialog(null, "IPK : " + Ipk[i] + " Telah Ditemukan,\n Apakah Anda benar-benar Ingin Menggantinya ?");
+
+                                        if (IpkBaruConfirm == JOptionPane.YES_OPTION) {
+                                            String IpkBaru = JOptionPane.showInputDialog("Masukkan Ipk Baru");
+                                            Double IpktelahDiganti = Double.valueOf(IpkBaru);
+                                            Ipk[i] = IpktelahDiganti;
+                                            System.out.println("Nama telah diganti menjadi : " + Ipk[i]);
+                                        }
+                                    }
+
+                                }
 
                             }
                         }
@@ -139,7 +163,7 @@ public class BiodataTambahFitur {
                         int keluar;
                         keluar = JOptionPane.showConfirmDialog(null, "Apakah Kamu Yakin Untuk Keluar?", "Konfirmasi Keluar Program", JOptionPane.YES_NO_CANCEL_OPTION);
                         if (keluar == JOptionPane.YES_OPTION) {
-                            System.exit(0);
+                            isRunning = false;
                         }
                     }
                 }
