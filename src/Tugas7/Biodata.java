@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class Biodata {
     public static void main(String[] args) {
-        // Tugas : 
+        // Tugas :         
         // Membuat tampilan GUI dengan joptionpane Biodata Ilkom A 2018 dengan konsep Array
         // isinya ada : 
         // Nim (long) :
@@ -61,7 +61,7 @@ public class Biodata {
                         3.9,3.44,3.54,3.32,3.54,
                         3.77,3.33,3.7,3.65,3.69,
                         3.45,3.54,3.43,3.77};
-        
+                
         
         for(int i=0; i<nim.length; i++){
             JOptionPane.showMessageDialog(null, "Biodata \nILKOM A 2018 \n==================="
@@ -70,6 +70,6 @@ public class Biodata {
                     + "ALAMAT : " + alamat[i] + "\n"
                     + "IPK         : " + Ipk[i] +
                     "\n===================");
-        }
+        }      
     }
 }
