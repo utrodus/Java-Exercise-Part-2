@@ -15,10 +15,7 @@ public class BiodataTambahFitur {
 
     public static void main(String[] args) {
 
-        boolean isRunning = true;
-        String SemuaData = "";
-
-        // Data Mahasiswa 
+        // Deklarasi Data Mahasiswa dengan array
         int[] nim = {1855201003, 1855201004,
             1855201005, 1855201006, 1855201007,
             1855201008, 1855201009, 1855201010, 1855201011, 1855201012};
@@ -31,43 +28,51 @@ public class BiodataTambahFitur {
         double[] Ipk = {3.4, 3.5, 3.6, 3.6, 3.8,
             3.5, 3.4, 3.7, 3.3, 3.4,};
 
-        JOptionPane.showMessageDialog(null, "Selamat Datang Di Aplikasi Biodata \n Mahasiswa ILKOM 2A UNU BLITAR");
+        // Deklarasi Variable        
+        // Untuk pengulangan aplikasi
+        boolean isRunning = true;
 
+        // Untuk penyimpanan semua array
+        String SemuaData = "";
+
+        // Gretting 
+        JOptionPane.showMessageDialog(null, "Selamat Datang Di Aplikasi Biodata \n Mahasiswa ILKOM 2-A UNU BLITAR");
+
+        // Pengulangan program    
         while (isRunning) {
             try {
-                String InputUser = JOptionPane.showInputDialog("==== Menu Aplikasi Biodata Mahasiswa ==== \n"
+                // ============= MENGAMBIL INPUT USER UNTUK MEMILIH MENU =============
+                String InputUser = JOptionPane.showInputDialog(
+                        "==== Menu Aplikasi Biodata Mahasiswa ==== \n"
                         + "\n1. Tampilkan Data Keseluruhan "
                         + "\n2. Cari Data Mahasiswa"
                         + "\n3. Ganti Data Mahasiswa"
                         + "\n4. Keluar \n\n"
                 );
+
                 int Menu = Integer.valueOf(InputUser);
 
                 if (Menu > 4 || Menu < 1) {
                     JOptionPane.showMessageDialog(null, "Yang Anda Masukkan Salah");
                 } else {
-                    
 
                     // ============= MENAMPILKAN DATA =============
                     if (Menu == 1) {
 
+                        // Mengambil semua isi array dengan for kemudian dimasukkan atau ditambahkan kedalam variable SemuaData
                         for (int i = 0; i < Ipk.length; i++) {
                             SemuaData += (i + 1) + ". " + nim[i] + " - " + nama[i] + " - Ipk: (" + Ipk[i] + ")" + "\n";
                         }
 
                         JOptionPane.showMessageDialog(null, " ##### Data Mahasiswa ##### \n\n" + SemuaData + "\n");
-                        // Isi variable Semua data menjadi kosongan atau kosongkan kembali variabel semua data
+
+                        // Isi variable Semua data yang telah ditampilkan di JoptionPane dikosongkan kembali supaya tidak ada duplikasi
+                        // atau ditampilkan dua kali
                         SemuaData = "";
                     }
 
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    // ============= CARI DATA =============
+                    // ============= MENCARI DATA =============
                     if (Menu == 2) {
 
                         String CariData = JOptionPane.showInputDialog("Pilih Data yang akan dicari berdasarkan : \n"
@@ -75,7 +80,7 @@ public class BiodataTambahFitur {
                                 + "\n2. NAMA"
                                 + "\n3. IPK"
                                 + "\n\n"
-                                );
+                        );
                         int Data = Integer.valueOf(CariData);
 
                         if (Data < 0 || Data > 3) {
@@ -87,7 +92,6 @@ public class BiodataTambahFitur {
                                 String CariNim = JOptionPane.showInputDialog(null, "Masukkan Nim yang ingin anda cari \n");
                                 int FindNim = Integer.valueOf(CariNim);
 
-                                
                                 for (int i = 0; i < nim.length; i++) {
                                     if (FindNim == nim[i]) {
                                         JOptionPane.showMessageDialog(null, "Biodata \nILKOM A 2018 \n==================="
@@ -106,11 +110,11 @@ public class BiodataTambahFitur {
                                     }
                                 }
                             }
-                            
+
                             // * Mencari Berdasarkan Nama
                             if (Data == 2) {
-                                String CariNama = JOptionPane.showInputDialog(null, "Masukkan Nama yang ingin anda cari \n");                                
-                                
+                                String CariNama = JOptionPane.showInputDialog(null, "Masukkan Nama yang ingin anda cari \n");
+
                                 for (int i = 0; i < nama.length; i++) {
                                     if (CariNama.equalsIgnoreCase(nama[i])) {
                                         JOptionPane.showMessageDialog(null, "Biodata \nILKOM A 2018 \n==================="
@@ -128,7 +132,6 @@ public class BiodataTambahFitur {
                                     }
                                 }
                             }
-                          
 
                             // * Mencari Berdasarkan Ipk
                             if (Data == 3) {
@@ -148,7 +151,7 @@ public class BiodataTambahFitur {
                                             String IpkBaru = JOptionPane.showInputDialog("Masukkan Ipk Baru");
                                             Double IpktelahDiganti = Double.valueOf(IpkBaru);
                                             Ipk[i] = IpktelahDiganti;
-                                            JOptionPane.showMessageDialog(null, "Ipk telah diganti menjadi : " + Ipk[i]);  
+                                            JOptionPane.showMessageDialog(null, "Ipk telah diganti menjadi : " + Ipk[i]);
                                         }
                                     }
                                 }
@@ -158,15 +161,7 @@ public class BiodataTambahFitur {
 
                     }
 
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    // ============= GANTI DATA =============
+                    // ============= MENGGANTI DATA =============
                     if (Menu == 3) {
                         String gantiData = JOptionPane.showInputDialog("Pilih Data yang akan diganti berdasarkan : \n"
                                 + "\n1. NIM "
@@ -182,7 +177,7 @@ public class BiodataTambahFitur {
 
                                 String CariNim = JOptionPane.showInputDialog(null, "Masukkan Nim yang ingin anda Ganti");
                                 int dataNIM = Integer.valueOf(CariNim);
-                                
+
                                 for (int i = 0; i < nim.length; i++) {
                                     if (dataNIM == nim[i]) {
                                         int GantiNim = JOptionPane.showConfirmDialog(null, "NIM " + nim[i] + " Telah Ditemukan,\n Apakah Anda benar-benar Ingin Menggantinya ?");
@@ -190,8 +185,11 @@ public class BiodataTambahFitur {
                                             String NimBaru = JOptionPane.showInputDialog("Masukkan NIM Baru");
                                             int nimTelahDiganti = Integer.valueOf(NimBaru);
                                             nim[i] = nimTelahDiganti;
-                                            JOptionPane.showMessageDialog(null, "Nim telah diganti menjadi : " + nim[i]);                                            
+                                            JOptionPane.showMessageDialog(null, "Nim telah diganti menjadi : " + nim[i]);
                                         }
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Maaf ! Nim tidak ditemukan");
+                                        break;
                                     }
                                 }
                             }
@@ -207,8 +205,11 @@ public class BiodataTambahFitur {
                                         if (GantiNama == JOptionPane.YES_OPTION) {
                                             String NamaBaru = JOptionPane.showInputDialog("Masukkan Nama Baru");
                                             nama[i] = NamaBaru;
-                                            JOptionPane.showMessageDialog(null, "Nama telah diganti menjadi : " + nama[i]);                                            
+                                            JOptionPane.showMessageDialog(null, "Nama telah diganti menjadi : " + nama[i]);
                                         }
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Maaf ! Nama tidak ditemukan");
+                                        break;
                                     }
 
                                 }
@@ -227,8 +228,11 @@ public class BiodataTambahFitur {
                                             String IpkBaru = JOptionPane.showInputDialog("Masukkan Ipk Baru");
                                             Double IpktelahDiganti = Double.valueOf(IpkBaru);
                                             Ipk[i] = IpktelahDiganti;
-                                            JOptionPane.showMessageDialog(null, "Ipk telah diganti menjadi : " + Ipk[i]);                                            
+                                            JOptionPane.showMessageDialog(null, "Ipk telah diganti menjadi : " + Ipk[i]);
                                         }
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Maaf ! IPK tidak ditemukan");
+                                        break;
                                     }
 
                                 }
@@ -237,10 +241,7 @@ public class BiodataTambahFitur {
                         }
 
                     }
-                    
-                    
-                    
-                    
+
                     // ============= KELUAR APLIKASI =============
                     if (Menu == 4) {
                         int keluar;
