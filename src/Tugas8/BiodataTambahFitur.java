@@ -174,12 +174,13 @@ public class BiodataTambahFitur {
                         } else {
                             // * ganti nim
                             if (Data == 1) {
-
-                                String CariNim = JOptionPane.showInputDialog(null, "Masukkan Nim yang ingin anda Ganti");
-                                int dataNIM = Integer.valueOf(CariNim);
+                                
+                                String CariNim = JOptionPane.showInputDialog(null, "Cari Nim yang ingin anda ganti \n");
+                                int FindNim = Integer.valueOf(CariNim);
 
                                 for (int i = 0; i < nim.length; i++) {
-                                    if (dataNIM == nim[i]) {
+                                    if (FindNim == nim[i]) {
+                                        
                                         int GantiNim = JOptionPane.showConfirmDialog(null, "NIM " + nim[i] + " Telah Ditemukan,\n Apakah Anda benar-benar Ingin Menggantinya ?");
                                         if (GantiNim == JOptionPane.YES_OPTION) {
                                             String NimBaru = JOptionPane.showInputDialog("Masukkan NIM Baru");
@@ -187,54 +188,45 @@ public class BiodataTambahFitur {
                                             nim[i] = nimTelahDiganti;
                                             JOptionPane.showMessageDialog(null, "Nim telah diganti menjadi : " + nim[i]);
                                         }
-                                    } else {
-                                        JOptionPane.showMessageDialog(null, "Maaf ! Nim tidak ditemukan");
-                                        break;
                                     }
                                 }
+                                
+                                
                             }
 
                             // * ganti nama
                             if (Data == 2) {
 
-                                String CariNama = JOptionPane.showInputDialog(null, "Masukkan Nama yang ingin anda Ganti");
+                                String CariNama = JOptionPane.showInputDialog(null, "Cari Nama yang ingin anda ganti \n");
 
                                 for (int i = 0; i < nama.length; i++) {
-                                    if (CariNama.equalsIgnoreCase(nama[i])) {
-                                        int GantiNama = JOptionPane.showConfirmDialog(null, "Nama : " + nama[i] + " Telah Ditemukan,\n Apakah Anda benar-benar Ingin Menggantinya ?");
+                                    if (CariNama.equalsIgnoreCase(nama[i])) {                                     
+                                        int GantiNama = JOptionPane.showConfirmDialog(null, " NAMA : " + nama[i] + ", Telah Ditemukan.\n Apakah Anda benar-benar Ingin Menggantinya ?");
                                         if (GantiNama == JOptionPane.YES_OPTION) {
                                             String NamaBaru = JOptionPane.showInputDialog("Masukkan Nama Baru");
                                             nama[i] = NamaBaru;
                                             JOptionPane.showMessageDialog(null, "Nama telah diganti menjadi : " + nama[i]);
                                         }
-                                    } else {
-                                        JOptionPane.showMessageDialog(null, "Maaf ! Nama tidak ditemukan");
-                                        break;
                                     }
-
                                 }
                             }
 
                             // * ganti ipk
                             if (Data == 3) {
-                                String CariIpk = JOptionPane.showInputDialog(null, "Masukkan IPK yang ingin anda Ganti");
-                                Double GantiIpk = Double.valueOf(CariIpk);
+                                String CariIpk = JOptionPane.showInputDialog(null, "Masukkan IPK yang ingin anda cari");
+                                Double findIpk = Double.valueOf(CariIpk);
 
                                 for (int i = 0; i < Ipk.length; i++) {
-                                    if (GantiIpk == Ipk[i]) {
-                                        int IpkBaruConfirm = JOptionPane.showConfirmDialog(null, "IPK : " + Ipk[i] + " Telah Ditemukan,\n Apakah Anda benar-benar Ingin Menggantinya ?");
-
-                                        if (IpkBaruConfirm == JOptionPane.YES_OPTION) {
+                                    if (findIpk == Ipk[i]) {
+                                       
+                                        int GantiIpk = JOptionPane.showConfirmDialog(null, " Ipk : " + Ipk[i] + ", Telah Ditemukan.\n Apakah Anda benar-benar Ingin Menggantinya ?");
+                                        if (GantiIpk == JOptionPane.YES_OPTION) {
                                             String IpkBaru = JOptionPane.showInputDialog("Masukkan Ipk Baru");
                                             Double IpktelahDiganti = Double.valueOf(IpkBaru);
                                             Ipk[i] = IpktelahDiganti;
                                             JOptionPane.showMessageDialog(null, "Ipk telah diganti menjadi : " + Ipk[i]);
                                         }
-                                    } else {
-                                        JOptionPane.showMessageDialog(null, "Maaf ! IPK tidak ditemukan");
-                                        break;
                                     }
-
                                 }
 
                             }
