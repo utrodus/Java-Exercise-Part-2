@@ -34,12 +34,16 @@ public class AplikasiPerpustakaan {
 
         // Untuk pengulangan aplikasi
         boolean isRunning = true;
+        boolean inputRunning = true;
+
+        // Untuk Window Message
+        String Warning = "Peringatan!";
 
         // Untuk penyimpanan semua array
         String SemuaData = "";
         String SemuaBuku = "";
         // Gretting 
-        JOptionPane.showMessageDialog(null, "=== SELAMAT DATANG DI APLIKASI  ===\n   PEMINJAMAN BUKU PERPUSTAKAAN\nUNIVERSITAS NAHDLATUL ULAMA BLITAR");
+        JOptionPane.showMessageDialog(null, "=== SELAMAT DATANG DI APLIKASI  ===\n  PEMINJAMAN BUKU PERPUSTAKAAN\nUNIVERSITAS NAHDLATUL ULAMA BLITAR");
 
         // Pengulangan program    
         while (isRunning) {
@@ -48,19 +52,17 @@ public class AplikasiPerpustakaan {
                 // ============= MENGAMBIL INPUT USER UNTUK MEMILIH MENU =============
                 String InputUser = JOptionPane.showInputDialog(
                         "----------- MENU APLIKASI PEMINJAMAN BUKU PERPUSTAKAAN ------------\n"
-                        + "\n     0. KELUAR APLIKASI                            6. TENTANG APLIKASI "
-                        + "\n     1. MASUKKAN DATA PEMINJAM          "
-                        + "\n     2. TAMPILKAN DATA PEMINJAM         "
-                        + "\n     3. CARI DATA PEMINJAM              "
-                        + "\n     4. GANTI DATA PEMINJAM             "
-                        + "\n     5. HAPUS DATA PEMINJAM         \n\n"
-                        + "-------------------------------------------------------------------------------------------------"
+                        + "\n   0. KELUAR APLIKASI                                   4. HAPUS DATA PEMINJAM "
+                        + "\n   1. MASUKKAN DATA PEMINJAM                 5. TENTANG APLIKASI"
+                        + "\n   2. TAMPILKAN DATA PEMINJAM         "
+                        + "\n   3. CARI DATA & GANTI DATA PEMINJAM\n\n"
+                        + "-----------------------------------------------------------------------------------------------\n"
                 );
 
                 int Menu = Integer.valueOf(InputUser);
 
-                if (Menu > 6 || Menu < 0) {
-                    JOptionPane.showMessageDialog(null, "Yang Anda Masukkan Salah");
+                if (Menu > 5 || Menu < 0) {
+                    JOptionPane.showMessageDialog(null, "Yang Anda Masukkan Salah,\nMenu Yang tersedia hanya dari angka 0 - 5", "WARNING !!! ADA KESALAHAN", JOptionPane.ERROR_MESSAGE);
                 } else {
 
                     // ============= INPUT DATA =============
@@ -68,11 +70,9 @@ public class AplikasiPerpustakaan {
                         String inputNomor = JOptionPane.showInputDialog("Data Ke (*Misal 1) : ");
                         int nomor = Integer.valueOf(inputNomor);
                         if (nomor == 0 || nomor < 0) {
-                            JOptionPane.showMessageDialog(null, "MAAF! DATA HARUS DIMULAI DARI ANGKA 1");
+                            JOptionPane.showMessageDialog(null, "MAAF! DATA HARUS DIMULAI DARI ANGKA 1", "WARNING !!! ADA KESALAHAN", JOptionPane.ERROR_MESSAGE);
                         } else {
-                            boolean inputRunning = true;
                             int indexArray = nomor - 1;
-
                             while (inputRunning) {
 
                                 String MenuInput = JOptionPane.showInputDialog(
@@ -93,13 +93,13 @@ public class AplikasiPerpustakaan {
                                         if (data1[0][indexArray] == 0) {
                                             data1[0][indexArray] = Integer.parseInt(JOptionPane.showInputDialog("Masukkan NIM Peminjam Buku : "));
                                         } else {
-                                            JOptionPane.showMessageDialog(null, "Maaf Nim Sudah Diisi ");
+                                            JOptionPane.showMessageDialog(null, "Maaf Nim Sudah Diisi ", "WARNING !!! ADA KESALAHAN", JOptionPane.ERROR_MESSAGE);
                                         }
                                         break;
 
                                     case 2:
                                         if (data2[0][indexArray] != null) {
-                                            JOptionPane.showMessageDialog(null, "Maaf Nama Peminjam Buku Sudah Diisi ");
+                                            JOptionPane.showMessageDialog(null, "Maaf Nama Peminjam Buku Sudah Diisi ", "WARNING !!! ADA KESALAHAN", JOptionPane.ERROR_MESSAGE);
                                         } else {
                                             data2[0][indexArray] = JOptionPane.showInputDialog("Masukkan Nama Lengkap Peminjam Buku : ");
                                         }
@@ -107,7 +107,7 @@ public class AplikasiPerpustakaan {
 
                                     case 3:
                                         if (data2[1][indexArray] != null) {
-                                            JOptionPane.showMessageDialog(null, "Maaf Jurusan Peminjam Buku Sudah Diisi ");
+                                            JOptionPane.showMessageDialog(null, "Maaf Jurusan Peminjam Buku Sudah Diisi ", "WARNING !!! ADA KESALAHAN", JOptionPane.ERROR_MESSAGE);
                                         } else {
                                             data2[1][indexArray] = JOptionPane.showInputDialog("Masukkan Jurusan Peminjam Buku : ");
                                         }
@@ -116,7 +116,7 @@ public class AplikasiPerpustakaan {
                                     case 4:
                                         for (int i = 0; i < 3; i++) {
                                             if (Buku[indexArray][i] != null) {
-                                                JOptionPane.showMessageDialog(null, "Maaf Judul Buku Ke " + (i + 1) + " Sudah Diisi ");
+                                                JOptionPane.showMessageDialog(null, "Maaf Judul Buku Ke " + (i + 1) + " Sudah Diisi ", "WARNING !!! ADA KESALAHAN", JOptionPane.ERROR_MESSAGE);
                                             } else {
                                                 Buku[indexArray][i] = JOptionPane.showInputDialog("Masukkan Judul Buku ke : " + (i + 1));
                                                 if (i < 2) {
@@ -133,9 +133,9 @@ public class AplikasiPerpustakaan {
 
                                     case 5:
                                         if (data2[2][indexArray] != null) {
-                                            JOptionPane.showMessageDialog(null, "Maaf Tanggal Pinjam Buku Sudah Diisi ");
+                                            JOptionPane.showMessageDialog(null, "Maaf Tanggal Pinjam Buku Sudah Diisi ", "WARNING !!! ADA KESALAHAN", JOptionPane.ERROR_MESSAGE);
                                         } else {
-                                            data2[2][indexArray] = JOptionPane.showInputDialog("Masukkan Tanggal Pinjam Buku : *format (01-Juni-2019) : ");
+                                            data2[2][indexArray] = JOptionPane.showInputDialog("Masukkan Tanggal Pinjam Buku : *format (01-Juni-2019) : ", "01-Juni-2019");
                                         }
                                         break;
 
@@ -144,13 +144,13 @@ public class AplikasiPerpustakaan {
                                                 || Buku[indexArray][1] != null || Buku[indexArray][2] != null && data2[1][indexArray] != null) {
                                             inputRunning = false;
                                         } else {
-                                            JOptionPane.showMessageDialog(null, "MAAF DATA PEMINJAM BUKU BELUM SELESAI DIISI,\nDIMOHON UNTUK MENGISI SEMUA DATA !");
+                                            JOptionPane.showMessageDialog(null, "MAAF DATA PEMINJAM BUKU BELUM SELESAI DIISI,\nDIMOHON UNTUK MENGISI SEMUA DATA !", "WARNING !!! ADA KESALAHAN", JOptionPane.ERROR_MESSAGE);
                                         }
 
                                         break;
 
                                     default:
-                                        JOptionPane.showMessageDialog(null, "Maaf Yang Anda Masukkan Salah");
+                                        JOptionPane.showMessageDialog(null, "Maaf Yang Anda Masukkan Salah", "WARNING !!! ADA KESALAHAN", JOptionPane.ERROR_MESSAGE);
                                 }
 
                             }
@@ -161,220 +161,195 @@ public class AplikasiPerpustakaan {
                     if (Menu == 2) {
 
                         for (int i = 0; i < data1[0].length; i++) {
-                            if (data1[0][i] == 0 || data2[0][i].equalsIgnoreCase("null") || data2[1][i].equalsIgnoreCase("null") || data2[1][i].equalsIgnoreCase("null")) {
-                            } else {
+                            if (data1[0][i] != 0 || data2[0][i] != null || data2[1][i] != null || data2[1][i] != null) {
                                 SemuaData += (i + 1) + ". " + data1[0][i] + " - " + data2[0][i] + " - " + data2[1][i] + " - " + data2[2][i] + "\n";
+                                JOptionPane.showMessageDialog(null, "DATA SELURUH PEMINJAM BUKU PERPUSTAKAAN UNIVERSITAS\nNAHDLATUL ULAMA BLITAR TAHUN 2019 \n\n" + SemuaData + "\n");
+                                SemuaData = "";
+                                break;
+                            } else {
+                                JOptionPane.showMessageDialog(null, "MAAF DATA MASIH KOSONG,\nMOHON UNTUK MENGISI DATA DAHULU!", "WARNING !!! ADA KESALAHAN", JOptionPane.ERROR_MESSAGE);
+                                break;
                             }
                         }
 
-                        JOptionPane.showMessageDialog(null, "DATA SELURUH PEMINJAM BUKU PERPUSTAKAAN\nUNIVERSITAS NAHDLATUL ULAMA BLITAR\nTAHUN 2019 \n\n" + SemuaData + "\n");
-                        SemuaData = "";
                     }
 
                     // ============= CARI DATA =============
                     if (Menu == 3) {
-                        String CariData = JOptionPane.showInputDialog("PILIH DATA YANG AKAN DICARI, BERDASARKAN "
-                                + "\n1. Nim "
-                                + "\n2. Nama"
-                                + "\n3. Jurusan"
-                                + "\n4. Tanggal Pinjam Buku\n");
+
+                        String CariData = JOptionPane.showInputDialog("MENU CARI DATA DAN GANTI DATA\nCari Data dan Ganti Data, Berdasarkan\n "
+                                + "\n1. NIM "
+                                + "\n2. NAMA"
+                                + "\n3. JURUSAN"
+                                + "\n4. TANGGAL PINJAM BUKU"
+                                + "\n5. KEMBALI KE MENU UTAMA\n\n"
+                        );
+
                         int Data = Integer.valueOf(CariData);
+                        switch (Data) {
+                            case 1:
+                                String CariNim = JOptionPane.showInputDialog(null, "Masukkan Nim Peminjam : \n");
+                                int FindNim = Integer.valueOf(CariNim);
 
-                        if (Data == 1) {
-                            String CariNim = JOptionPane.showInputDialog(null, "Masukkan Nim Peminjam : \n");
-                            int FindNim = Integer.valueOf(CariNim);
+                                for (int i = 0; i < data1[0].length; i++) {
+                                    if (FindNim == data1[0][i]) {
 
-                            for (int i = 0; i < data1[0].length; i++) {
-                                if (FindNim == data1[0][i]) {
-
-                                    for (int j = 0; j < 2; j++) {
-                                        if (Buku[i][j] != null) {
-                                            SemuaBuku += Buku[i][j] + "\n";
-                                        } else {
+                                        for (int j = 0; j < 3; j++) {
+                                            if (Buku[i][j] != null) {
+                                                SemuaBuku += (j + 1) + ". " + Buku[i][j] + "\n";
+                                            } else {
+                                            }
                                         }
-                                    }
 
-                                    JOptionPane.showMessageDialog(null, "Detail Peminjam Buku Perpustakaan UNU BLITAR \n======================================"
-                                            + "\nNIM PEMINJAM        : " + data1[0][i] + "\n"
-                                            + "NAMA PEMINJAM    : " + data2[0][i] + "\n"
-                                            + "JURUSAN            : " + data2[1][i] + "\n"
-                                            + "TGL PINJAM BUKU  : " + data2[2][i] + "\n"
-                                            + "\nJUDUL BUKU YANG DI PINJAM : \n"
-                                            + (i + 1) + ". " + SemuaBuku
-                                            + "\n======================================");
+                                        JOptionPane.showMessageDialog(null, "Detail Peminjam Buku Perpustakaan UNU BLITAR \n======================================"
+                                                + "\nNIM PEMINJAM        : " + data1[0][i] + "\n"
+                                                + "NAMA PEMINJAM    : " + data2[0][i] + "\n"
+                                                + "JURUSAN                 : " + data2[1][i] + "\n"
+                                                + "TGL PINJAM BUKU  : " + data2[2][i] + "\n"
+                                                + "\nJUDUL BUKU YANG DI PINJAM : \n"
+                                                + SemuaBuku + "\n"
+                                                + "======================================");
 
-                                }
-                            }
-                            SemuaBuku = "";
-                        }
+                                        int GantiData = JOptionPane.showConfirmDialog(null, " INGIN MENGGANTI DATA PEMINJAM ?");
+                                        if (GantiData == JOptionPane.YES_OPTION) {
 
-                        if (Data == 2) {
-                            String CariNama = JOptionPane.showInputDialog(null, "Masukkan Nama Peminjam : \n");
+                                            int GantiNim = JOptionPane.showConfirmDialog(null, " INGIN MENGGANTI NIM PEMINJAM ?");
+                                            if (GantiNim == JOptionPane.YES_OPTION) {
+                                                String NimBaru = JOptionPane.showInputDialog("Masukkan NIM Baru");
+                                                int nimTelahDiganti = Integer.valueOf(NimBaru);
+                                                data1[0][i] = nimTelahDiganti;
+                                            }
 
-                            for (int i = 0; i < data1[0].length; i++) {
-                                if (CariNama.equalsIgnoreCase(data2[0][i])) {
+                                            int GantiNama = JOptionPane.showConfirmDialog(null, " INGIN MENGGANTI NAMA PEMINJAM ?");
+                                            if (GantiNama == JOptionPane.YES_OPTION) {
+                                                String NamaBaru = JOptionPane.showInputDialog("Masukkan Nama Baru");
+                                                data2[0][i] = NamaBaru;
+                                            }
 
-                                    for (int j = 0; j < 2; j++) {
-                                        if (Buku[i][j] != null) {
-                                            SemuaBuku += Buku[i][j] + "\n";
-                                        } else {
+                                            int GantiJurusan = JOptionPane.showConfirmDialog(null, " INGIN MENGGANTI JURUSAN PEMINJAM ?");
+                                            if (GantiJurusan == JOptionPane.YES_OPTION) {
+                                                String JurusanBaru = JOptionPane.showInputDialog("Masukkan Jurusan Peminjam : ");
+                                                data2[1][i] = JurusanBaru;
+                                            }
+
+                                            int GantiTgl = JOptionPane.showConfirmDialog(null, " INGIN MENGGANTI TANGGAL PINJAM BUKU ?");
+                                            if (GantiTgl == JOptionPane.YES_OPTION) {
+                                                String TglBaru = JOptionPane.showInputDialog("Masukkan Tanggal Baru : ");
+                                                data2[2][i] = TglBaru;
+                                            }
+
+                                            int GantiJudulBuku = JOptionPane.showConfirmDialog(null, " INGIN MENGGANTI JUDUL BUKU YANG DIPINJAM ?");
+                                            if (GantiJudulBuku == JOptionPane.YES_OPTION) {
+                                                for (int j = 0; j < 3; j++) {
+                                                    
+                                                    Buku[i][j] = JOptionPane.showInputDialog("Ganti Judul Buku ke : " + (j + 1));
+                                                    if (j < 2 || Buku[i][j] != null) {                                                        
+                                                            int gantiBuku = JOptionPane.showConfirmDialog(null, "Ingin Menggati Judul Buku Lagi?", "Ganti Judul Buku", JOptionPane.YES_NO_CANCEL_OPTION);
+                                                            if (gantiBuku == JOptionPane.YES_OPTION) {
+                                                            } else if (gantiBuku == JOptionPane.NO_OPTION) {
+                                                                break;
+                                                            }
+                                                        
+                                                    }                                                   
+                                                }
+                                            }
+
                                         }
+
+                                    } else {
                                     }
-
-                                    JOptionPane.showMessageDialog(null, "Detail Peminjam Buku Perpustakaan UNU BLITAR \n======================================"
-                                            + "\nNIM PEMINJAM        : " + data1[0][i] + "\n"
-                                            + "NAMA PEMINJAM    : " + data2[0][i] + "\n"
-                                            + "JURUSAN            : " + data2[1][i] + "\n"
-                                            + "TGL PINJAM BUKU  : " + data2[2][i] + "\n"
-                                            + "\nJUDUL BUKU YANG DI PINJAM : \n"
-                                            + (i + 1) + ". " + SemuaBuku
-                                            + "\n======================================");
-
                                 }
-                            }
-                            SemuaBuku = "";
-                        }
+                                SemuaBuku = "";
+                                break;
 
-                        if (Data == 3) {
-                            String CariJurusan = JOptionPane.showInputDialog(null, "Masukkan Jurusan Peminjam : \n");
+                            case 2:
+                                String CariNama = JOptionPane.showInputDialog(null, "Masukkan Nama Peminjam : \n");
+                                for (int i = 0; i < data1[0].length; i++) {
+                                    if (CariNama.equalsIgnoreCase(data2[0][i])) {
 
-                            for (int i = 0; i < data1[0].length; i++) {
-                                if (CariJurusan.equalsIgnoreCase(data2[1][i])) {
-                                    for (int j = 0; j < 2; j++) {
-                                        if (Buku[i][j] != null) {
-                                            SemuaBuku += Buku[i][j] + "\n";
-                                        } else {
+                                        for (int j = 0; j < 2; j++) {
+                                            if (Buku[i][j] != null) {
+                                                SemuaBuku += Buku[i][j] + "\n";
+                                            } else {
+                                            }
                                         }
+
+                                        JOptionPane.showMessageDialog(null, "Detail Peminjam Buku Perpustakaan UNU BLITAR \n======================================"
+                                                + "\nNIM PEMINJAM        : " + data1[0][i] + "\n"
+                                                + "NAMA PEMINJAM    : " + data2[0][i] + "\n"
+                                                + "JURUSAN            : " + data2[1][i] + "\n"
+                                                + "TGL PINJAM BUKU  : " + data2[2][i] + "\n"
+                                                + "\nJUDUL BUKU YANG DI PINJAM : \n"
+                                                + (i + 1) + ". " + SemuaBuku
+                                                + "\n======================================");
+
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "DATA TIDAK DITEMUKAN", "WARNING !!! ADA KESALAHAN", JOptionPane.ERROR_MESSAGE);
+                                        break;
                                     }
-
-                                    JOptionPane.showMessageDialog(null, "Detail Peminjam Buku Perpustakaan UNU BLITAR \n======================================"
-                                            + "\nNIM PEMINJAM        : " + data1[0][i] + "\n"
-                                            + "NAMA PEMINJAM    : " + data2[0][i] + "\n"
-                                            + "JURUSAN            : " + data2[1][i] + "\n"
-                                            + "TGL PINJAM BUKU  : " + data2[2][i] + "\n"
-                                            + "\nJUDUL BUKU YANG DI PINJAM : \n"
-                                            + (i + 1) + ". " + SemuaBuku
-                                            + "\n======================================");
                                 }
-                            }
-                            SemuaBuku = "";
-                        }
+                                SemuaBuku = "";
+                                break;
 
-                        if (Data == 4) {
-                            String CariTgl = JOptionPane.showInputDialog(null, "Masukkan Tanggal Pinjam Buku : \n");
-
-                            for (int i = 0; i < data1[0].length; i++) {
-                                if (CariTgl.equalsIgnoreCase(data2[1][i])) {
-                                    for (int j = 0; j < 2; j++) {
-                                        if (Buku[i][j] != null) {
-                                            SemuaBuku += Buku[i][j] + "\n";
-                                        } else {
+                            case 3:
+                                String CariJurusan = JOptionPane.showInputDialog(null, "Masukkan Jurusan Peminjam : \n");
+                                for (int i = 0; i < data1[0].length; i++) {
+                                    if (CariJurusan.equalsIgnoreCase(data2[1][i])) {
+                                        for (int j = 0; j < 2; j++) {
+                                            if (Buku[i][j] != null) {
+                                                SemuaBuku += Buku[i][j] + "\n";
+                                            } else {
+                                            }
                                         }
-                                    }
 
-                                    JOptionPane.showMessageDialog(null, "Detail Peminjam Buku Perpustakaan UNU BLITAR \n======================================"
-                                            + "\nNIM PEMINJAM        : " + data1[0][i] + "\n"
-                                            + "NAMA PEMINJAM    : " + data2[0][i] + "\n"
-                                            + "JURUSAN            : " + data2[1][i] + "\n"
-                                            + "TGL PINJAM BUKU  : " + data2[2][i] + "\n"
-                                            + "\nJUDUL BUKU YANG DI PINJAM : \n"
-                                            + (i + 1) + ". " + SemuaBuku
-                                            + "\n======================================");
-                                }
-                            }
-                            SemuaBuku = "";
-                        }
-
-                    }
-
-                    if (Menu == 4) {
-                        String gantiData = JOptionPane.showInputDialog("Pilih Data yang akan diganti, Berdasarkan : "
-                                + "\n1. Nim "
-                                + "\n2. Nama"
-                                + "\n3. Judul Buku"
-                                + "\n4. Jurusan"
-                                + "\n5. Tanggal Pinjam Buku\n");
-                        int Data = Integer.valueOf(gantiData);
-
-                        if (Data == 1) {
-                            String CariNim = JOptionPane.showInputDialog(null, "Cari Nim yang ingin anda ganti \n");
-                            int FindNim = Integer.valueOf(CariNim);
-
-                            for (int i = 0; i < data1[0].length; i++) {
-                                if (FindNim == data1[0][i]) {
-
-                                    int GantiNim = JOptionPane.showConfirmDialog(null, "NIM " + data1[0][i] + " Telah Ditemukan,\n Apakah Anda benar-benar Ingin Menggantinya ?");
-                                    if (GantiNim == JOptionPane.YES_OPTION) {
-                                        String NimBaru = JOptionPane.showInputDialog("Masukkan NIM Baru");
-                                        int nimTelahDiganti = Integer.valueOf(NimBaru);
-                                        data1[0][i] = nimTelahDiganti;
-                                        JOptionPane.showMessageDialog(null, "Nim telah diganti menjadi : " + data1[0][i]);
+                                        JOptionPane.showMessageDialog(null, "Detail Peminjam Buku Perpustakaan UNU BLITAR \n======================================"
+                                                + "\nNIM PEMINJAM        : " + data1[0][i] + "\n"
+                                                + "NAMA PEMINJAM    : " + data2[0][i] + "\n"
+                                                + "JURUSAN            : " + data2[1][i] + "\n"
+                                                + "TGL PINJAM BUKU  : " + data2[2][i] + "\n"
+                                                + "\nJUDUL BUKU YANG DI PINJAM : \n"
+                                                + (i + 1) + ". " + SemuaBuku
+                                                + "\n======================================");
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "DATA TIDAK DITEMUKAN", "WARNING !!! ADA KESALAHAN", JOptionPane.ERROR_MESSAGE);
+                                        break;
                                     }
                                 }
-                            }
-                        }
+                                SemuaBuku = "";
+                                break;
 
-                        if (Data == 2) {
-                            String CariNama = JOptionPane.showInputDialog(null, "Cari Nama yang ingin anda ganti \n");
-
-                            for (int i = 0; i < data1[0].length; i++) {
-                                if (CariNama.equalsIgnoreCase(data2[0][i])) {
-                                    int GantiNama = JOptionPane.showConfirmDialog(null, " NAMA : " + data2[0][i] + ", Telah Ditemukan.\n Apakah Anda benar-benar Ingin Menggantinya ?");
-                                    if (GantiNama == JOptionPane.YES_OPTION) {
-                                        String NamaBaru = JOptionPane.showInputDialog("Masukkan Nama Baru");
-                                        data2[0][i] = NamaBaru;
-                                        JOptionPane.showMessageDialog(null, "Nama telah diganti menjadi : " + data2[0][i]);
+                            case 4:
+                                String CariTgl = JOptionPane.showInputDialog(null, "Masukkan Tanggal Pinjam Buku : \n");
+                                for (int i = 0; i < data1[0].length; i++) {
+                                    if (CariTgl.equalsIgnoreCase(data2[1][i])) {
+                                        for (int j = 0; j < 2; j++) {
+                                            if (Buku[i][j] != null) {
+                                                SemuaBuku += Buku[i][j] + "\n";
+                                            } else {
+                                            }
+                                        }
+                                        JOptionPane.showMessageDialog(null, "Detail Peminjam Buku Perpustakaan UNU BLITAR \n======================================"
+                                                + "\nNIM PEMINJAM        : " + data1[0][i] + "\n"
+                                                + "NAMA PEMINJAM    : " + data2[0][i] + "\n"
+                                                + "JURUSAN            : " + data2[1][i] + "\n"
+                                                + "TGL PINJAM BUKU  : " + data2[2][i] + "\n"
+                                                + "\nJUDUL BUKU YANG DI PINJAM : \n"
+                                                + (i + 1) + ". " + SemuaBuku
+                                                + "\n======================================");
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "DATA TIDAK DITEMUKAN", "WARNING !!! ADA KESALAHAN", JOptionPane.ERROR_MESSAGE);
+                                        break;
                                     }
                                 }
-                            }
-                        }
+                                SemuaBuku = "";
 
-                        if (Data == 3) {
-                            String CariJudul = JOptionPane.showInputDialog(null, "Cari Judul Buku yang ingin anda ganti \n");
+                            case 5:
+                                break;
 
-                            for (int i = 0; i < data1[0].length; i++) {
-                                if (CariJudul.equalsIgnoreCase(data2[1][i])) {
-                                    int GantiJudul = JOptionPane.showConfirmDialog(null, " Judul Buku : " + data2[1][i] + ", Telah Ditemukan.\n Apakah Anda benar-benar Ingin Menggantinya ?");
-                                    if (GantiJudul == JOptionPane.YES_OPTION) {
-                                        String JudulBaru = JOptionPane.showInputDialog("Masukkan Judul Buku Baru");
-                                        data2[1][i] = JudulBaru;
-                                        JOptionPane.showMessageDialog(null, "Judul Buku telah diganti menjadi : " + data2[1][i]);
-                                    }
-                                }
-                            }
-                        }
+                            default:
+                                JOptionPane.showMessageDialog(null, "Maaf Yang Anda Masukkan Salah", "WARNING !!! ADA KESALAHAN", JOptionPane.ERROR_MESSAGE);
+                                break;
 
-                        if (Data == 4) {
-                            String CariNoHP = JOptionPane.showInputDialog(null, "Cari Jurusan Peminjam yang ingin anda ganti \n");
-                            int findNoHP = Integer.valueOf(CariNoHP);
-
-                            for (int i = 0; i < data1[0].length; i++) {
-                                if (findNoHP == data1[1][i]) {
-
-                                    int GantiNoHP = JOptionPane.showConfirmDialog(null, "Jurusan Peminjam Buku " + data1[1][i] + " Telah Ditemukan,\n Apakah Anda benar-benar Ingin Menggantinya ?");
-                                    if (GantiNoHP == JOptionPane.YES_OPTION) {
-                                        String NoHPBaru = JOptionPane.showInputDialog("Masukkan Jurusan");
-                                        int NoHPTelahDiganti = Integer.valueOf(NoHPBaru);
-                                        data1[1][i] = NoHPTelahDiganti;
-                                        JOptionPane.showMessageDialog(null, "No HP Buku telah diganti menjadi : " + data1[1][i]);
-                                    }
-                                }
-                            }
-                        }
-
-                        if (Data == 5) {
-                            String tglPinjam = JOptionPane.showInputDialog(null, "Cari Tanggal Pinjam Buku yang ingin anda ganti \n");
-
-                            for (int i = 0; i < data1[0].length; i++) {
-                                if (tglPinjam.equalsIgnoreCase(data2[1][i])) {
-                                    int Gantitgl = JOptionPane.showConfirmDialog(null, " Tanggal Pinjam Buku : " + data2[1][i] + ", Telah Ditemukan.\n Apakah Anda benar-benar Ingin Menggantinya ?");
-                                    if (Gantitgl == JOptionPane.YES_OPTION) {
-                                        String tglBaru = JOptionPane.showInputDialog("Masukkan Tanggal Pinjam Buku Baru");
-                                        data2[1][i] = tglBaru;
-                                        JOptionPane.showMessageDialog(null, "Tanggal Pinjam Buku telah diganti menjadi : " + data2[1][i]);
-                                    }
-                                }
-                            }
                         }
 
                     }
@@ -390,7 +365,8 @@ public class AplikasiPerpustakaan {
 
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Maaf ! Yang anda masukkan salah");
+                JOptionPane.showMessageDialog(null, "Maaf ! Yang Anda masukkan salah", "WARNING !!! ADA KESALAHAN", JOptionPane.ERROR_MESSAGE);
+                System.out.println(e);
             }
         }
 
