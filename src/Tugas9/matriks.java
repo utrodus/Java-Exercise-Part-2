@@ -89,8 +89,9 @@ public class matriks {
                             if (SemuaData.length() == 4) {
                                 JOptionPane.showMessageDialog(null, jumlahData + " , " + jumlahData + "\n" + jumlahData + " , " + jumlahData);
                                 SemuaData = "";
+                                
                             }
-
+                            
                         }
 
                     }
@@ -112,7 +113,9 @@ public class matriks {
                             if (SemuaData.length() == 4) {
                                 JOptionPane.showMessageDialog(null, jumlahData + " , " + jumlahData + "\n" + jumlahData + " , " + jumlahData);
                                 SemuaData = "";
+                                break;
                             }
+                            
 
                         }
 
